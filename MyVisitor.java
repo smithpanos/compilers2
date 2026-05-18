@@ -1,11 +1,28 @@
 import syntaxtree.*;
 import visitor.*;
+import java.util.LinkedHashMap;
 
 
 
 class MyVisitor extends GJDepthFirst<String, String>{
 
     private static final boolean DEBUG = false;
+
+    class MethodInfo{
+        String name;
+        String returnType;
+
+        LinkedHashMap<String, String> parameters = new LinkedHashMap<String, String>();
+        LinkedHashMap<String, String> locals = new LinkedHashMap<String, String>();
+    }
+    class ClassInfo{
+        String name;
+        ClassInfo parentName;
+        LinkedHashMap<String, MethodInfo> methods = new LinkedHashMap<String, MethodInfo>();
+        LinkedHashMap<String, String> fields = new LinkedHashMap<String, String>();
+    }
+    LinkedHashMap<String, ClassInfo> classes = new LinkedHashMap<String, ClassInfo>();
+
 
     /**
      * f0 -> "class"
@@ -32,6 +49,8 @@ class MyVisitor extends GJDepthFirst<String, String>{
         if(DEBUG) {System.out.println("Start visitor."); }
         String classname = n.f1.accept(this, null);
         System.out.println("Main Class: " + classname);
+        ClassInfo ci = new ClassInfo();
+        ci.name = classname;
 
         super.visit(n, argu);
 
