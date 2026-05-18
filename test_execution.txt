@@ -1,0 +1,16 @@
+
+
+// MAIN CLASS: Tiny
+// CLASS: A
+// FIELD: x : int
+// FIELD: flag : boolean
+// METHOD: foo returns int
+// PARAM: y : int
+// LOCAL: z : int
+// METHOD: bar returns boolean
+// CLASS: B extends A
+// FIELD: k : int
+// METHOD: baz returns int
+// PARAM: n : int
+// PARAM: ok : boolean
+// LOCAL: result : int
